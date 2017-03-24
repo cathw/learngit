@@ -28,3 +28,5 @@ git reset --hard commit_id   commit_id表示版本号  commit_id为head表示当
 
 8、分支概念
 工作区  -- 暂存区stage ---分支master
+使用git add 提交后，被提交的内容就进入到暂存区（版本a），此时还未进行git commit提交到分支
+这个时候，再对提交的内容进行修改（版本b），但未进行git add 而是进行git commit命令时，只会提交暂存区的内容（即版本a）到分支，而工作区的内容（版本b）不会被提交到分支，因为此时它的修改并没有进入到暂存区
