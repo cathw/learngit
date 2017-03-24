@@ -84,5 +84,5 @@ git branch   #当前分支前面会标有一个*号
 git merge <branch_name>
 
 16、删除分支
-git branch -d <branch_name>
+git branch -d <branch_name> #test conflicts
 
