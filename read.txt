@@ -91,3 +91,9 @@ git branch -d <branch_name>
 Git用<<<<<<<，版本1=======，版本2>>>>>>>标记出不同分支的内容
 用git log --graph命令可以看到分支合并图
 git log --graph --pretty=oneline --abbrev-commit
+
+18、分支管理策略
+通常，合并分支时，如果可能，git会用Fast forward模式，但在这种模式下，删除分支后，会丢掉分支信息。如果要强制禁用Fast forward模式，git就会在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息。
+git merge --no-ff -m 'merge with no-ff' dev  #参数--no-ff 表示禁用Fast forward,因为本次合并要创建一个新的commit，所以加上参数-m
+
+同样可以使用git log --graph --pretty=oneline --abbrev-commit查看分支历史
