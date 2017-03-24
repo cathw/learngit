@@ -11,5 +11,11 @@ class Tools_Runtime{
   static function getruntime($start,$end) {
     return $end-$start;
   }
+  // 返回当前时间  精确到微秒
+  static function gettimeusec(){
+  	$timenum=gettimeofday();
+		$ordernum=$timenum['sec'].'--'.$timenum['usec'];
+  	return $ordernum;
+  }
 }
 ?>
