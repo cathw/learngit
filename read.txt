@@ -84,7 +84,10 @@ git branch   #当前分支前面会标有一个*号
 git merge <branch_name>
 
 16、删除分支
-git branch -d <branch_name> #test conflicts
+git branch -d <branch_name> 
 
 17、解决冲突
+当Git无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。
 Git用<<<<<<<，版本1=======，版本2>>>>>>>标记出不同分支的内容
+用git log --graph命令可以看到分支合并图
+git log --graph --pretty=oneline --abbrev-commit
