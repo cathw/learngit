@@ -27,3 +27,4 @@ git reset --hard commit_id   commit_id表示版本号  commit_id为head表示当
 如果不小心回退到上一个版本，之后又想回到当前版本，可以通过git reflog查看执行过的命令，找到当前版本号，然后进行git reset --hard 当前版本号   即可回到当前版本
 
 8、分支概念
+工作区  -- 暂存区stage ---分支master
