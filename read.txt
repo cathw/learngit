@@ -30,3 +30,27 @@ git reset --hard commit_id   commit_id表示版本号  commit_id为head表示当
 工作区  -- 暂存区stage ---分支master
 使用git add 提交后，被提交的内容就进入到暂存区（版本a），此时还未进行git commit提交到分支
 这个时候，再对提交的内容进行修改（版本b），但未进行git add 而是进行git commit命令时，只会提交暂存区的内容（即版本a）到分支，而工作区的内容（版本b）不会被提交到分支，因为此时它的修改并没有进入到暂存区
+
+9、撤销修改
+git checkout --read.txt  把readme.txt文件在工作区的修改全部撤销，这里有两种情况：
+一种是readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；
+一种是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。
+总之，就是让这个文件回到最近一次git commit或git add时的状态。
+
+举例：
+（1）9:10  添加a
+此时git checkout --read.txt    添加a在工作区会被删除，暂存区无‘添加a’
+（2）9:15  添加b 且 进行git add read.txt
+9:18  添加c
+此时git checkout --read.txt    添加b在暂存区不会被删除，‘添加c’在工作区会被删除，
+如果要删除暂存区内容‘添加b’，则进行命令：git reset head -- read.txt
+然后 git checkout --read.txt  之后git status查看下已经没有可commit的文件了，且工作区的read.txt，内容‘添加b’也已经被撤销了
+
+小结撤销修改：
+场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout -- file。
+
+场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD file，就回到了场景1，第二步按场景1操作。
+
+场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节，不过前提是没有推送到远程库。
+
+10、
