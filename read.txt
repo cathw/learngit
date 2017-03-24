@@ -1,0 +1,29 @@
+this is a txt
+show the test of git
+1、初始化一个Git仓库
+git init
+(切换到相应项目目录，如 cd /www/test,然后输入git init)
+
+2、添加文件到git仓库
+① git add [file]  可反复多次使用，添加多个文件，如git add test1.txt （回车） git add test2.txt
+② git commit -m "explain"    -m后面输入的是本次提交的说明，可以输入任意内容
+
+3、查看工作区状态，是否有添加或修改文件
+git status
+
+4、查看修改内容
+git diff
+
+5、如果文件修改完，要重新提交，步骤同2操作，或者使用 git commit -am "add and commit" 一次性添加并提交
+
+6、查看提交版本历史
+git log 
+git log --pretty=oneline  以一行形式显示日志
+查看命令历史
+git relog
+
+7、版本回退
+git reset --hard commit_id   commit_id表示版本号  commit_id为head表示当前版本，为head^表示回退到上一个版本，为head~100表示回退到往上100个版本
+如果不小心回退到上一个版本，之后又想回到当前版本，可以通过git relog查看执行过的命令，找到当前版本号，然后进行git reset --hard 当前版本号   即可回到当前版本
+
+8、分支概念
