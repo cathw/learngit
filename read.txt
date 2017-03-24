@@ -79,3 +79,11 @@ git checkout dev  #切换到dev分支
 
 14、查看当前分支
 git branch   #当前分支前面会标有一个*号
+
+15、合并某分支到当前分支
+git merge <branch_name>
+
+16、删除分支
+git branch -d <branch_name>
+
+mark master  1111
