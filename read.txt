@@ -85,6 +85,7 @@ git merge <branch_name>
 
 16、删除分支
 git branch -d <branch_name> 
+git branch -D <branch_name>强行删除
 
 17、解决冲突
 当Git无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。
@@ -97,3 +98,30 @@ git log --graph --pretty=oneline --abbrev-commit
 git merge --no-ff -m 'merge with no-ff' dev  #参数--no-ff 表示禁用Fast forward,因为本次合并要创建一个新的commit，所以加上参数-m
 
 同样可以使用git log --graph --pretty=oneline --abbrev-commit查看分支历史
+
+19、bug分支
+通常解决bug会使用git stash命令暂存当前写到一半的代码，
+切换到某个分支dev上，新建一个分支来专门修复bug，
+修复完再合并到分支dev（git merge --no-ff -m 'fix bug001' dev），
+并删除bug分支（git branch -d bug001），
+之后切换到先前写到一半的代码分支dev2，恢复代码：git stash pop（修复的同时并删除stash内容），
+还可以使用git stash apply恢复，再用git stash drop删除stash内容
+git stash list查看状态
+
+20、查看远程库信息
+git remote
+git remote -v   #查看远程库详细信息
+git push origin <branch_name>    #推送branch_name分支上所有本地提交内容到远程库
+
+git branch --set-upstream dev origin/dev   #指定本地dev分支与远程origin/dev分支的链接
+git pull    #拉取远程最新的提交内容
+如果git pull提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream branch-name origin/branch-name进行链接
+
+
+21、创建标签
+git tag <tag_name>  #创建标签,默认HEAD
+git tag    #查看所有标签
+git tag <tag_name> <commit_id>   #创建指定某个版本的标签
+git show <tag_name>    #查看标签信息
+git tag -a  <tag_name> -m 'explain' <commit_id>  #创建带有说明的标签并指定某个版本 -a指定标签名，-m指定说明文字
+git tag -s <tag_name> -m "blablabla..."   #可以用PGP签名标签,但必须先安装gpg（GnuPG），否则会报错
