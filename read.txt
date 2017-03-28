@@ -125,3 +125,14 @@ git tag <tag_name> <commit_id>   #创建指定某个版本的标签
 git show <tag_name>    #查看标签信息
 git tag -a  <tag_name> -m 'explain' <commit_id>  #创建带有说明的标签并指定某个版本 -a指定标签名，-m指定说明文字
 git tag -s <tag_name> -m "blablabla..."   #可以用PGP签名标签,但必须先安装gpg（GnuPG），否则会报错
+
+
+21、删除标签
+git tag -d <tag_name>  
+
+22、推广标签到远程
+git push origin <tag_name>
+git push origin --tag   #推送本地全部未推送过的标签
+
+23、删除远程标签
+先git push -d <tag_name>  再git push origin :refs/tags/<tag_name>
